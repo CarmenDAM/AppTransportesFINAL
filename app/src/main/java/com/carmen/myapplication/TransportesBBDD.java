@@ -9,7 +9,6 @@ import androidx.room.RoomDatabase;
 //Creació de la Base de Datos y asignación de sus tablas
 @Database(entities = {TablaBus.class, TablaMetro.class, TablaTren.class}, version= 1)
 public abstract class TransportesBBDD extends RoomDatabase {
-    //https://www.youtube.com/watch?v=MHX5i6cLbDo
 
     //Creación de la instancia de la Base de Datos
     public static volatile TransportesBBDD INSTANCE;
