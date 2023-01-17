@@ -21,7 +21,7 @@ public abstract class TransportesBBDD extends RoomDatabase {
     //Los datos de la base de datos se guardan en Transporte.db
     public static TransportesBBDD getInstance(Context context){
         if (INSTANCE==null){
-            INSTANCE= Room.databaseBuilder(context, TransportesBBDD.class, "Transporte.db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+            INSTANCE= Room.databaseBuilder(context, TransportesBBDD.class, "AppTransportes.db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         }
 
         //Devolvemos la Instancia de la Base de Datos
