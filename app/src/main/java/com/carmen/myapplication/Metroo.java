@@ -70,7 +70,18 @@ public class Metroo extends AppCompatActivity {
                 //Declaración de los campos del registro
                 String lin = txtLineaM.getText().toString();
                 String dest = txtDestinoM.getText().toString();
-                float imp = Float.parseFloat(txtImporteM.getText().toString());
+
+                String importM=txtImporteM.getText().toString()+"";
+
+//Evita el cierre de la aplicación al dejar el campo Importe vacío
+                float imp;
+                if (importM=="") {
+                    imp = 0;
+                }else{
+                    imp = Float.parseFloat(importM);
+                }
+
+                //float imp = Float.parseFloat(txtImporteM.getText().toString());
                 String fe = txtFechaM.getText().toString();
                 float importeM= repoM.ultimoRegistroMetro().getSaldoM();
 

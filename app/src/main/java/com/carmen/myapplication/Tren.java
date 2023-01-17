@@ -70,7 +70,18 @@ public class Tren extends AppCompatActivity {
                 //Declaración de los campos del registro
                 String lin = txtLineaT.getText().toString();
                 String dest = txtDestinoT.getText().toString();
-                float imp = Float.parseFloat(txtImporteT.getText().toString());
+
+//Evita el cierre de la aplicación al dejar el campo Importe vacío
+                String importT=txtImporteT.getText().toString()+"";
+
+                float imp;
+                if (importT=="") {
+                    imp = 0;
+                }else{
+                    imp = Float.parseFloat(importT);
+                }
+
+                //float imp = Float.parseFloat(txtImporteT.getText().toString());
                 String fe = txtFechaT.getText().toString();
                 float importeT= repoT.ultimoRegistroTren().getSaldoT();
 

@@ -63,13 +63,24 @@ public class Buss extends AppCompatActivity {
         btnInsertarB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+
                 //Declaración de los campos del registro
                 String lin = txtLineaB.getText().toString();
                 String dest = txtDestinoB.getText().toString();
-                float imp = Float.parseFloat(txtImporteB.getText().toString());
+                String importB=txtImporteB.getText().toString()+"";
+//Evita el cierre de la aplicación al dejar el campo Importe vacío
+                float imp;
+                if (importB=="") {
+                     imp = 0;
+                }else{
+                    imp = Float.parseFloat(importB);
+                    }
+
+                //float imp = Float.parseFloat(txtImporteB.getText().toString());
                 String fe = txtFechaB.getText().toString();
                 float importeB= repoB.ultimoRegistroBus().getSaldoB();
                 //float sal = Float.parseFloat(editTextSaldoBus.getText().toString());
+
 
                 //Inserción del nuevo registro en la tabla Bus de la BBDD
                 TablaBus nuevoRegistroB=new TablaBus();
@@ -79,6 +90,7 @@ public class Buss extends AppCompatActivity {
                 nuevoRegistroB.setFechaB(fe);
                 nuevoRegistroB.setSaldoB(importeB-imp); //Resto el importe del viaje al saldo actual que se muestra en Home
                 repoB.insertBus(nuevoRegistroB);
+
 
             }
         });

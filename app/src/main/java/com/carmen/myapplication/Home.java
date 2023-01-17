@@ -25,6 +25,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         //Abrimos la Base de Datos
         TransportesBBDD Tdb = TransportesBBDD.getInstance(this.getApplicationContext());
         //Creamos un repositorio que nos guarde los registros en la tabla Bus
@@ -57,7 +58,6 @@ public class Home extends AppCompatActivity {
             nuevoT.setSaldoT(0);
             repoT.insertTren(nuevoT);
         }
-
 
 
         //Botón Bus que nos envía al menú del Bus
@@ -107,6 +107,9 @@ public class Home extends AppCompatActivity {
         et6 = (EditText) findViewById(R.id.editTextAnadirTren);
         btnSumarT = (Button) findViewById(R.id.bAnadirTren);
 
+        et1.setText(""+repoB.ultimoRegistroBus().getSaldoB());
+        et3.setText(""+repoM.ultimoRegistroMetro().getSaldoM());
+        et5.setText(""+repoT.ultimoRegistroTren().getSaldoT());
 
         //Botón que añade saldo al registro del Bus
         btnSumarB.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +118,15 @@ public class Home extends AppCompatActivity {
                     //Recojo el Importe del último registro del Bus
                     float aux1= repoB.ultimoRegistroBus().getSaldoB();
                     //Añado manualmente cuánto dinero añado
-                    float aux2 = Float.valueOf(et2.getText().toString());
+                    float aux2;// = Float.valueOf(et2.getText().toString());
+//Evita el cierre de laaplicación al dejar el campo en el que añadimos saldo vacío
+                    String importB=et2.getText().toString()+"";
+                    if (importB=="") {
+                        aux2 = 0;
+                    }else{
+                        aux2 = Float.parseFloat(importB);
+                    }
+
                     //Resultado suma el saldo añadido al saldo que había guardado
                     resultado = aux1 + aux2;
 
@@ -139,7 +150,16 @@ public class Home extends AppCompatActivity {
                 //Recojo el Importe del último registro del Metro
                 float aux3= repoM.ultimoRegistroMetro().getSaldoM();
                 //Añado manualmente cuánto dinero añado
-                float aux4 = Float.valueOf(et4.getText().toString());
+                float aux4;// = Float.valueOf(et4.getText().toString());
+
+//Evita el cierre de la aplicación al dejar el campo en el que añadimos saldo vacío
+                String importM=et4.getText().toString()+"";
+                if (importM=="") {
+                    aux4 = 0;
+                }else{
+                    aux4 = Float.parseFloat(importM);
+                }
+
                 //Resultado suma el saldo añadido al saldo que había guardado
                 resultadoM = aux3 + aux4;
 
@@ -163,7 +183,16 @@ public class Home extends AppCompatActivity {
                 //Recojo el Importe del último registro del Metro
                 float aux5= repoT.ultimoRegistroTren().getSaldoT();
                 //Añado manualmente cuánto dinero añado
-                float aux6 = Float.valueOf(et6.getText().toString());
+                float aux6;// = Float.valueOf(et6.getText().toString());
+
+//Evita el cierre de laaplicación al dejar el campo en el que añadimos saldo vacío
+                String importT=et6.getText().toString()+"";
+                if (importT=="") {
+                    aux6 = 0;
+                }else{
+                    aux6 = Float.parseFloat(importT);
+                }
+
                 //Resultado suma el saldo añadido al saldo que había guardado
                 resultadoT = aux5 + aux6;
 
